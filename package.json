@@ -1,0 +1,26 @@
+{
+  "name": "co-typing-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.4",
+    "gitignore": "^0.6.0",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fahadhaidari/co-typing-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fahadhaidari/co-typing-server/issues"
+  },
+  "homepage": "https://github.com/fahadhaidari/co-typing-server#readme"
+}
