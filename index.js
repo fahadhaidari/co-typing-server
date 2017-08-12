@@ -3,6 +3,9 @@ const http = require("http").Server(app);
 const sockets = require("./socket");
 const io = require("socket.io")(http);
 
+const room = require('./routes/room');
+
+
 // const express = require("express");
 // const sockets = require("./socket/index.js");
 // const http = require("http");
@@ -12,6 +15,8 @@ const io = require("socket.io")(http);
 
 
 sockets(io);
+
+app.use('/', room);
 
 
 app.use(function(req, res, next) {
