@@ -24,6 +24,10 @@ app.use(function(req, res, next) {
 http.listen(8080, function() {
   console.log("Listening on PORT:8080");
 });
+
+// server.listen(8080, function() {
+//   console.log("Listening on PORT:8080");
+// });
 //
 // module.exports = {
 //   app,
