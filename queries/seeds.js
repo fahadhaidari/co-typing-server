@@ -31,6 +31,11 @@ module.exports = {
           name: "Room5",
           owner: "User1",
           users: []
+        },
+        {
+          name: "Room6",
+          owner: "User2",
+          users: []
         }
       ];
       db.collection("room").insertMany(rooms, function(err, res) {
