@@ -23,6 +23,21 @@ module.exports = function(io) {
 
 
     io.on("join room", function(_data) {
+      let wantedRoomIndex = rooms.indexOf(_data.roomName);
+      let room = undefined;
+      if(wantedRoomIndex > 0) {
+        room = rooms[wantedRoomIndex];
+
+        let userNameIndex = room.users[_data.userName];
+        if(userNameIndex < 0) {
+          room.users.push(_data.userName);
+        } else {
+          console.log("Use does exist");
+        }
+
+      } else {
+        console.log("Room doesn't exist");
+      }
 
     });
 

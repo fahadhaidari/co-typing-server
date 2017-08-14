@@ -10,32 +10,32 @@ module.exports = {
       var rooms = [{
           name: "Room1",
           owner: "User1",
-          users: []
+          users: ["User1"]
         },
         {
           name: "Room2",
           owner: "User2",
-          users: []
+          users: ["User2"]
         },
         {
           name: "Room3",
           owner: "User3",
-          users: []
+          users: ["User3"]
         },
         {
           name: "Room4",
           owner: "User1",
-          users: []
+          users: ["User1"]
         },
         {
           name: "Room5",
           owner: "User1",
-          users: []
+          users: ["User1"]
         },
         {
           name: "Room6",
           owner: "User2",
-          users: []
+          users: ["User2"]
         }
       ];
       db.collection("room").insertMany(rooms, function(err, res) {
