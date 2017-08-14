@@ -28,7 +28,7 @@ module.exports = {
 
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-        return db.collection("room").find({}).toArray(function(err, result) {
+        db.collection("room").find({}).toArray(function(err, result) {
         if (err) throw err;
         console.log(result);
         return result;
