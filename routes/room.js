@@ -6,7 +6,7 @@ const seeds = require('../queries/seeds.js');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/cotyping_db";
 
-router.get('/', function(req, res) {
+router.get('/rooms', function(req, res) {
 
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
