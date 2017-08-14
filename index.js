@@ -5,6 +5,10 @@ const io = require("socket.io")(http);
 
 const room = require('./routes/room');
 
+const cors = require("cors");
+
+
+
 
 // const express = require("express");
 // const sockets = require("./socket/index.js");
@@ -16,6 +20,7 @@ const room = require('./routes/room');
 
 sockets(io);
 
+app.use(cors());
 app.use('/', room);
 
 
