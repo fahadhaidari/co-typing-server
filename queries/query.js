@@ -28,13 +28,23 @@ module.exports = {
 
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-        db.collection("room").find({}).toArray(function(err, result) {
+      db.collection("room").find({}).toArray(function(err, result) {
         if (err) throw err;
         console.log(result);
         return result;
         db.close();
       });
     });
+  },
 
+  deleteCollection: function(_collectionName) {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("room").drop(function(err, delOK) {
+        if (err) throw err;
+        if (delOK) console.log("Collection deleted");
+        db.close();
+      });
+    });
   }
 }

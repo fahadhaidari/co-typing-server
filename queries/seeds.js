@@ -9,15 +9,28 @@ module.exports = {
       if (err) throw err;
       var rooms = [{
           name: "Room1",
-          owner: "User1"
+          owner: "User1",
+          users: []
         },
         {
           name: "Room2",
-          address: "User2"
+          owner: "User2",
+          users: []
         },
         {
           name: "Room3",
-          address: "User1"
+          owner: "User3",
+          users: []
+        },
+        {
+          name: "Room4",
+          owner: "User1",
+          users: []
+        },
+        {
+          name: "Room5",
+          owner: "User1",
+          users: []
         }
       ];
       db.collection("room").insertMany(rooms, function(err, res) {
