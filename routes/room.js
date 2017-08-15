@@ -19,7 +19,7 @@ router.get('/rooms', function(req, res) {
     if (err) throw err;
       db.collection("room").find({}).toArray(function(err, result) {
       if (err) throw err;
-      console.log(result);
+      // console.log(result);
       res.json(result);
       db.close();
     });
@@ -32,7 +32,7 @@ function getAllRooms() {
       db.collection("room").find({}).toArray(function(err, result) {
       if (err) throw err;
       return new Promise(result);
-      console.log(result);
+      // console.log(result);
       db.close();
     });
   });

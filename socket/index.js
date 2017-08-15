@@ -17,22 +17,28 @@ module.exports = function(io) {
 
   io.on("connection", function(socket) {
     console.log("user connected...");
-    console.log("Rooms ------------", rooms);
+    // console.log("Rooms ------------", rooms);
     // socket.broadcast.emit("on connection", "user connected...");
-    socket.emit("on connection", "user connected...");
+    // socket.emit("on connection", "user connected...");
 
 
-    io.on("join room", function(_data) {
-      let wantedRoomIndex = rooms.indexOf(_data.roomName);
-      let room = undefined;
-      if(wantedRoomIndex > 0) {
-        room = rooms[wantedRoomIndex];
+    socket.on("join room", function(_info) {
+      // let wantedRoomIndex = rooms.indexOf(_info.roomName);
+      let room = findRoom(_info.roomName);
 
-        let userNameIndex = room.users[_data.userName];
+      console.log("Server info ", _info)
+      if(room) {
+
+        console.log("Room does exist " , room.name);
+        // room = rooms[wantedRoomIndex];
+
+        let userNameIndex = room.users.indexOf(_info.userName);
         if(userNameIndex < 0) {
-          room.users.push(_data.userName);
+          room.users.push(_info.userName);
+          console.log("User " , _info.userName, " joined " , _info.roomName);
+          console.log("Room users " , room.users);
         } else {
-          console.log("Use does exist");
+          console.log("User does exist");
         }
 
       } else {
@@ -40,6 +46,16 @@ module.exports = function(io) {
       }
 
     });
+
+
+    function findRoom(_roomName) {
+      for (var i = 0; i < rooms.length; i++) {
+        if(rooms[i].name == _roomName) {
+          return rooms[i];
+          break;
+        }
+      }
+    }
 
   });
 
