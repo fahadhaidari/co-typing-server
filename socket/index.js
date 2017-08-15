@@ -21,20 +21,18 @@ module.exports = function(io) {
     // socket.broadcast.emit("on connection", "user connected...");
     // socket.emit("on connection", "user connected...");
 
-
     socket.on("join room", function(_info) {
-      // let wantedRoomIndex = rooms.indexOf(_info.roomName);
       let room = findRoom(_info.roomName);
 
       console.log("Server info ", _info)
       if(room) {
 
         console.log("Room does exist " , room.name);
-        // room = rooms[wantedRoomIndex];
 
         let userNameIndex = room.users.indexOf(_info.userName);
         if(userNameIndex < 0) {
           room.users.push(_info.userName);
+          socket.join(_info.roomName);
           console.log("User " , _info.userName, " joined " , _info.roomName);
           console.log("Room users " , room.users);
         } else {
