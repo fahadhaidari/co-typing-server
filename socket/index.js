@@ -35,6 +35,9 @@ module.exports = function(io) {
           socket.join(_info.roomName);
           console.log("User " , _info.userName, " joined " , _info.roomName);
           console.log("Room users " , room.users);
+
+          socket.broadcast.to(_info.roomName).emit('joined', _info.userName);
+
         } else {
           console.log("User does exist");
         }
