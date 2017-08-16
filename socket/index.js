@@ -52,11 +52,34 @@ module.exports = function(io) {
       socket.broadcast.to(_info.roomName).emit('message', _info);
     });
 
+    socket.on("signout", function(_info) {
+      console.log("User ", _info.userName, " is leaving ", _info.roomName);
+      removeUserFromRoom(_info.userName, _info.roomName);
+      socket.broadcast.to(_info.roomName).emit('user signout', _info);
+    });
+
     function findRoom(_roomName) {
       for (var i = 0; i < rooms.length; i++) {
         if (rooms[i].name == _roomName) {
           return rooms[i];
           break;
+        }
+      }
+    }
+
+    function removeUserFromRoom(_userName, _roomName) {
+      let breakMainLoop = false;
+      for (var i = 0; i < rooms.length; i++) {
+        if(breakMainLoop) {break;}
+        if (rooms[i].name == _roomName) {
+          let room = rooms[i];
+          for (var i = 0; i < room.users.length; i++) {
+            if(room.users[i] == _userName) {
+              room.users.splice(i, 1);
+              breakMainLoop = true;
+              break;
+            }
+          }
         }
       }
     }
