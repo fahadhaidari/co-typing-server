@@ -50,6 +50,7 @@ module.exports = function(io) {
 
     socket.on("message", function(_info) {
       console.log("Data coming form the client " , _info);
+      socket.broadcast.to(_info.roomName).emit('message', _info);
     });
 
 
