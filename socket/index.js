@@ -48,6 +48,10 @@ module.exports = function(io) {
 
     });
 
+    socket.on("message", function(_info) {
+      console.log("Data coming form the client " , _info);
+    });
+
 
     function findRoom(_roomName) {
       for (var i = 0; i < rooms.length; i++) {
