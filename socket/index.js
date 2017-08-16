@@ -56,6 +56,7 @@ module.exports = function(io) {
       console.log("User ", _info.userName, " is leaving ", _info.roomName);
       removeUserFromRoom(_info.userName, _info.roomName);
       socket.broadcast.to(_info.roomName).emit('user signout', _info);
+      socket.emit('signout success', _info);
     });
 
     function findRoom(_roomName) {
