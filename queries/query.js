@@ -30,7 +30,7 @@ module.exports = {
       if (err) throw err;
       db.collection("room").find({}).toArray(function(err, result) {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
         return result;
         db.close();
       });

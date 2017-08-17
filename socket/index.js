@@ -24,10 +24,14 @@ module.exports = function(io) {
     socket.on("join room", function(_info) {
       let room = findRoom(_info.roomName);
 
+
       console.log("Server info ", _info)
       if (room) {
 
+
+
         console.log("Room does exist ", room.name);
+        console.log("Has users ", room.users);
 
         let userNameIndex = room.users.indexOf(_info.userName);
         if (userNameIndex < 0) {
@@ -39,6 +43,7 @@ module.exports = function(io) {
           socket.broadcast.to(_info.roomName).emit('joined', _info.userName);
         } else {
           console.log("User does exist");
+          socket.emit('user exist', _info.userName);
         }
 
       } else {
