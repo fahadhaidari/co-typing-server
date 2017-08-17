@@ -64,6 +64,10 @@ module.exports = function(io) {
       socket.emit('signout success', _info);
     });
 
+    socket.on("signed out", function(_info) {
+      socket.broadcast.to(_info.roomName).emit('signed out', _info);
+    });
+
     function findRoom(_roomName) {
       for (var i = 0; i < rooms.length; i++) {
         if (rooms[i].name == _roomName) {
