@@ -28,8 +28,6 @@ module.exports = function(io) {
       console.log("Server info ", _info)
       if (room) {
 
-
-
         console.log("Room does exist ", room.name);
         console.log("Has users ", room.users);
 
@@ -57,6 +55,15 @@ module.exports = function(io) {
       socket.broadcast.to(_info.roomName).emit('message', _info);
     });
 
+
+    socket.on("get users", function(_roomName) {
+      console.log("getting users..........");
+      let room = findRoom(_roomName);
+      console.log("---------------------- ", room.users);
+      socket.emit("room users", room.users);
+    });
+
+
     socket.on("signout", function(_info) {
       console.log("User ", _info.userName, " is leaving ", _info.roomName);
       removeUserFromRoom(_info.userName, _info.roomName);
@@ -80,11 +87,13 @@ module.exports = function(io) {
     function removeUserFromRoom(_userName, _roomName) {
       let breakMainLoop = false;
       for (var i = 0; i < rooms.length; i++) {
-        if(breakMainLoop) {break;}
+        if (breakMainLoop) {
+          break;
+        }
         if (rooms[i].name == _roomName) {
           let room = rooms[i];
           for (var i = 0; i < room.users.length; i++) {
-            if(room.users[i] == _userName) {
+            if (room.users[i] == _userName) {
               room.users.splice(i, 1);
               breakMainLoop = true;
               break;
