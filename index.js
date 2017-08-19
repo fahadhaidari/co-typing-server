@@ -11,7 +11,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = "mongodb://localhost:27017/cotyping_db" ||
 
-"mongodb://fahadhaidari:<mongolab1234>@ds145010.mlab.com:45010/heroku_j0zssjqs" ;
+"mongodb://fahadhaidari:<mongolab1234>@ds145010.mlab.com:45010/heroku_j0zssjqs";
 
 
 
@@ -33,7 +33,7 @@ app.use(cors());
 //   next(err);
 // });
 
-MongoClient.connect(url, function(err, database) {
+MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
   if (err) {
     console.log(err);
     process.exit(1);

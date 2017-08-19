@@ -13,7 +13,7 @@ module.exports = function(io) {
   var rooms = [];
 
 // process.env.MONGODB_URI
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
     if (err) throw err;
     db.collection("room").find({}).toArray(function(err, result) {
       if (err) throw err;
