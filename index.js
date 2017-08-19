@@ -6,7 +6,14 @@ const io = require("socket.io")(http);
 const cors = require("cors");
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/cotyping_db" || process.env.MONGODB_URI;
+// var url = "mongodb://localhost:27017/cotyping_db" || process.env.MONGODB_URI;
+
+
+var url = "mongodb://localhost:27017/cotyping_db" ||
+
+"mongodb://fahadhaidari:<mongolab1234>@ds145010.mlab.com:45010/heroku_j0zssjqs" ;
+
+
 
 
 var db = undefined;
