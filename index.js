@@ -31,7 +31,9 @@ app.use(function(req, res, next) {
 });
 
 
-http.listen(8080, function() {
+var port = 8080 || process.env.PORT;
+
+http.listen(port , function() {
   console.log("Listening on PORT:8080");
 });
 
