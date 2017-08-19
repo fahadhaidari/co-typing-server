@@ -4,7 +4,7 @@ var url = "mongodb://localhost:27017/cotyping_db";
 
 (function() {
 
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
     if (err) throw err;
     var rooms = [{
         name: "Room1",

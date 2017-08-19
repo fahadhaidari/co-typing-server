@@ -5,7 +5,7 @@ module.exports = {
 
   createDB: function() {
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
       if (err) throw err;
       console.log("Database created! ", db);
       db.close();
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   createCollection: function() {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
       if (err) throw err;
       db.createCollection("room", function(err, res) {
         if (err) throw err;
@@ -26,7 +26,7 @@ module.exports = {
 
   getAllRooms: function() {
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
       if (err) throw err;
       db.collection("room").find({}).toArray(function(err, result) {
         if (err) throw err;
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   deleteCollection: function(_collectionName) {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
       if (err) throw err;
       db.collection("room").drop(function(err, delOK) {
         if (err) throw err;
