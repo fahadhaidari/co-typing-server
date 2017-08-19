@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/cotyping_db";
+var url = "mongodb://localhost:27017/cotyping_db" || process.env.MONGODB_URI;
 const query = require('../queries/query.js');
 
 module.exports = function(io) {
@@ -7,7 +7,7 @@ module.exports = function(io) {
   var rooms = [];
 
 // process.env.MONGODB_URI
-  MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     db.collection("room").find({}).toArray(function(err, result) {
       if (err) throw err;

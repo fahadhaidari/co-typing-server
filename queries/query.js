@@ -1,50 +1,51 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/cotyping_db";
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/cotyping_db" || process.env.MONGODB_URI;
+var db = require("../index.js");
 
 module.exports = {
 
   createDB: function() {
 
-    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+    // MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       console.log("Database created! ", db);
-      db.close();
-    });
+      // db.close();
+    // });
 
   },
 
   createCollection: function() {
-    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
-      if (err) throw err;
+    // MongoClient.connect(url, function(err, db) {
+      // if (err) throw err;
       db.createCollection("room", function(err, res) {
         if (err) throw err;
         console.log("Collection created!");
         db.close();
       });
-    });
+    // });
   },
 
   getAllRooms: function() {
 
-    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
-      if (err) throw err;
+    // MongoClient.connect(url, function(err, db) {
+      // if (err) throw err;
       db.collection("room").find({}).toArray(function(err, result) {
         if (err) throw err;
         // console.log(result);
         return result;
         db.close();
       });
-    });
+    // });
   },
 
   deleteCollection: function(_collectionName) {
-    MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
-      if (err) throw err;
+    // MongoClient.connect(url, function(err, db) {
+      // if (err) throw err;
       db.collection("room").drop(function(err, delOK) {
         if (err) throw err;
         if (delOK) console.log("Collection deleted");
         db.close();
       });
-    });
+    // });
   }
 }

@@ -1,10 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/cotyping_db";
-
+var url = "mongodb://localhost:27017/cotyping_db" || process.env.MONGODB_URI;
+// const db = require("../index.js");
 
 (function() {
 
-  MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var rooms = [{
         name: "Room1",
