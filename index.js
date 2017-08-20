@@ -14,15 +14,12 @@ var url = "mongodb://localhost:27017/cotyping_db" || "mongodb://fahadhaidari:<mo
 
 
 
-
 var db = undefined;
 
 sockets(io);
 
-app.use(cors({
-  origin: 'https://cotyping-db10a.firebaseapp.com/', // when deply, we need to change it to another URL
-  credentials: true
-}));
+
+
 
 // app.use('/', room);
 
@@ -141,3 +138,5 @@ app.get('/drop', function(req, res) {
     db.close();
   });
 });
+
+app.use(cors());
