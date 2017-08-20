@@ -11,6 +11,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = "mongodb://localhost:27017/cotyping_db" || "mongodb://fahadhaidari:<mongolab1234>@ds145010.mlab.com:45010/heroku_j0zssjqs";
 
+app.use(cors());
 
 
 
@@ -63,11 +64,11 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 
 app.get('/rooms', function(req, res) {
 
-  return db.collection("room").find({}).toArray(function(err, result) {
+  db.collection("room").find({}).toArray(function(err, result) {
     if (err) throw err;
     // console.log(result);
     res.json(result);
-    db.close();
+    // db.close();
   });
 
 });
@@ -77,7 +78,7 @@ app.get('/create', function(req, res) {
   db.createCollection("room", function(err, res) {
     if (err) throw err;
     console.log("Collection created!");
-    db.close();
+    // db.close();
   });
 
 });
@@ -87,7 +88,7 @@ app.get('/delete', function(req, res) {
   db.collection("room").drop(function(err, delOK) {
     if (err) throw err;
     if (delOK) console.log("Collection deleted");
-    db.close();
+    // db.close();
   });
 });
 
@@ -129,7 +130,7 @@ app.get('/seed', function(req, res) {
   db.collection("room").insertMany(rooms, function(err, res) {
     if (err) throw err;
     console.log("Number of documents inserted: " + res.insertedCount);
-    db.close();
+    // db.close();
   });
 
 });
@@ -139,8 +140,6 @@ app.get('/drop', function(req, res) {
   db.collection("room").drop(function(err, delOK) {
     if (err) throw err;
     if (delOK) console.log("Collection deleted");
-    db.close();
+    // db.close();
   });
 });
-
-app.use(cors());

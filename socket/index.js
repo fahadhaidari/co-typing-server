@@ -18,7 +18,7 @@ module.exports = function(io) {
     db.collection("room").find({}).toArray(function(err, result) {
       if (err) throw err;
       rooms = result;
-      db.close();
+      // db.close();
     });
   });
 
