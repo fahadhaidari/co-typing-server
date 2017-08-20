@@ -45,10 +45,12 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
   console.log("Database connection ready");
 
 
-  http.listen(process.env.PORT || 3000, function() {
-    console.log("Listening on PORT:3000");
-  });
+  // http.listen(process.env.PORT || 3000, function() {
+  //   console.log("Listening on PORT:3000");
+  // });
 
+
+  var server = http.createServer(app).listen(process.env.PORT || 3000)
 
 
   // module.exports.db = db;
