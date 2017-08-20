@@ -6,7 +6,7 @@ var url = "mongodb://localhost:27017/cotyping_db" ||
 
 "mongodb://fahadhaidari:<mongolab1234>@ds145010.mlab.com:45010/heroku_j0zssjqs";
 
-const query = require('../queries/query.js');
+// const query = require('../queries/query.js');
 
 module.exports = function(io) {
 
