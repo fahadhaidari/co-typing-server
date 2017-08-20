@@ -63,7 +63,7 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 
 app.get('/rooms', function(req, res) {
 
-  db.collection("room").find({}).toArray(function(err, result) {
+  return db.collection("room").find({}).toArray(function(err, result) {
     if (err) throw err;
     // console.log(result);
     res.json(result);
