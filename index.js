@@ -1,7 +1,7 @@
 const app = require("express")();
 const http = require("http").Server(app);
-const sockets = require("./socket");
-const io = require("socket.io")(http);
+// const sockets = require("./socket");
+// const io = require("socket.io")(http);
 // const room = require('./routes/room');
 const cors = require("cors");
 
@@ -18,7 +18,7 @@ var url = "mongodb://localhost:27017/cotyping_db" ||
 
 var db = undefined;
 
-sockets(io);
+// sockets(io);
 
 app.use(cors());
 // app.use('/', room);
