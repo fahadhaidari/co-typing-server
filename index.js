@@ -33,6 +33,13 @@ sockets(io);
 //   next(err);
 // });
 
+
+  http.listen(process.env.PORT || 3000, function() {
+    console.log("Listening on PORT:3000");
+  });
+
+
+
 MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
   if (err) {
     console.log(err);
@@ -44,10 +51,6 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 
   console.log("Database connection ready");
 
-
-  http.listen(process.env.PORT || 3000, function() {
-    console.log("Listening on PORT:3000");
-  });
 
 
 
